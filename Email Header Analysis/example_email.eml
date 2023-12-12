@@ -1,0 +1,2733 @@
+Delivered-To: yogeshkanwade2020.comp@mmcoe.edu.in
+Received: by 2002:a05:6a10:bd23:b0:526:8f05:d8d5 with SMTP id vu35csp773324pxb;
+        Sat, 9 Dec 2023 08:14:18 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFWPg7p1qV0muXv1yVS4IWevH1egD88IU41G9HG0ZJhT0w5tPYPHjSz9bpBdwhp0Ji4CCx6
+X-Received: by 2002:a17:902:eccd:b0:1d0:b3f5:c30c with SMTP id a13-20020a170902eccd00b001d0b3f5c30cmr2042418plh.98.1702138457557;
+        Sat, 09 Dec 2023 08:14:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702138457; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mGrsFG6oO+/5M2WS1joanXwrJPgq43hOJQn7mOOnwyZ8qq/SdOY2BqHmqMH4nUzfcq
+         zoyzDPDKe5s+2T7cr4Anf6Eut/bBDaOpC2NqIqEDu+vjgeVtth/niTioMYFAtZKEtGNt
+         4R9XbXeJNIyutQ1z157gAA2wnAeDtLf5ZVuOpvH8ITJeYQj+iGd4ObdO7jrMvJE5+kMF
+         lA+7kQ0JXBzbo4yZmjU2ijZB3Iqbj0uuNgexqU3neIFEmvL1laTO55MkrqbvrzVUh4r2
+         MmS0GgnqgYHCWX3vFzb/2Q19KQZxzDznZH2wJrynCGSg/azRTLH2WgROfcGtDeDurFVb
+         zupw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:mime-version:message-id:user-agent:reply-to:subject:to
+         :from:date:dkim-signature:dkim-signature;
+        bh=r7CwcmKTXxqyJB12+9fLJtAIOi/xMAPwhR6aspnntVk=;
+        fh=ExPfM4SardYwc18mcNjrvvMMx/V6eGrZgwzjjo91Xkw=;
+        b=huttB3I5wgMIYQJjFWv62nfh03pOrgCVN39fQPR0bV19sJnd0nzk4lR+Lg9BkOeIr7
+         UTTtL2trgTdjjIvuFkIC0skrB+wIG6/LjiLJZwQuzyq8mkDzNtCNKlzGUEcnMXb5FIaQ
+         /cibDdopsGKDZbm8itgTGq/CL+rRnUYD9NVxZoK1MCneLXFvFDwyhoyO2dTnI1x8TgkA
+         j85x3iAaqeh12DEozk7G0qlBJSafo0/QyiBzV2MC4KXZUetNKB+NZdd7jelVTPDRpHQ8
+         a/4e4JRm8QEHSCGbptUsxTJgfnUdtQnCrxwrURMZxPOpxjk3avLQat8jrHMpVNQ26BQY
+         PRCg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@internshala.com header.s=yxdzmqnawc53qcp6t2riorwzv3gyyhg3 header.b=F11x6s5P;
+       dkim=pass header.i=@amazonses.com header.s=rlntogby6xsxlfnvyxwnvvhttakdsqto header.b=BmE4oZRu;
+       spf=pass (google.com: domain of 0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com designates 76.223.181.101 as permitted sender) smtp.mailfrom=0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=internshala.com
+Return-Path: <0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com>
+Received: from c181-101.smtp-out.ap-south-1.amazonses.com (c181-101.smtp-out.ap-south-1.amazonses.com. [76.223.181.101])
+        by mx.google.com with ESMTPS id j3-20020a170902c08300b001cf68d3e90csi3335918pld.98.2023.12.09.08.14.14
+        for <yogeshkanwade2020.comp@mmcoe.edu.in>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Dec 2023 08:14:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com designates 76.223.181.101 as permitted sender) client-ip=76.223.181.101;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@internshala.com header.s=yxdzmqnawc53qcp6t2riorwzv3gyyhg3 header.b=F11x6s5P;
+       dkim=pass header.i=@amazonses.com header.s=rlntogby6xsxlfnvyxwnvvhttakdsqto header.b=BmE4oZRu;
+       spf=pass (google.com: domain of 0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com designates 76.223.181.101 as permitted sender) smtp.mailfrom=0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=internshala.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=yxdzmqnawc53qcp6t2riorwzv3gyyhg3; d=internshala.com; t=1702138452; h=Date:From:To:Subject:Reply-To:Message-ID:Mime-Version:Content-Type; bh=2MxFDlBpfvz8Cr+Nst8tLoXoUTIOf/g1JVXi96Yoe/I=; b=F11x6s5P25b0ceHl6LF/eIz5t/NMIAA+jS3Nh6IjNdpfj/XaftJqJ9XTq7oGN/O7 uZaTh+Cd5GmpIj3zYLm1WcKqefNKIqWE81qLw57k2uKeHMEK9fJRBZydJz4HVwIuotC +JAsGfTBJUJKxnicxxExo1tePoFfHh4o6xe2M9Vc=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=rlntogby6xsxlfnvyxwnvvhttakdsqto; d=amazonses.com; t=1702138452; h=Date:From:To:Subject:Reply-To:Message-ID:Mime-Version:Content-Type:Feedback-ID; bh=2MxFDlBpfvz8Cr+Nst8tLoXoUTIOf/g1JVXi96Yoe/I=; b=BmE4oZRuExZzNg4FpyM7cWvooH/BZEN2nil6IZs2RZk0T2+cPMyTN0xQ6UjBltMc HkDlwvPFfnstWemBeua4Fo6pxtUYhHHeijOECrAZ/yKFe2DkxNJLHp6ZPmGoPxR4K0C M/DA0dhMN1SY/EAQx1dJPFv+iU0WD/BJe7v0UHLw=
+Date: Sat, 9 Dec 2023 16:14:12 +0000
+From: Internshala <student@internshala.com>
+To: yogeshkanwade2020.comp@mmcoe.edu.in
+Subject: Yogesh, new opportunities in Sportskeeda, YTViews Digital Media & more
+Reply-To: Internshala <student@internshala.com>
+User-Agent: internshala.com
+X-Sender: student@internshala.com
+X-Mailer: internshala.com
+X-Priority: 3 (Normal)
+Message-ID: <0109018c4f5b98ef-fcd3c2cd-d1dc-4be2-b79f-8d2ff9811ad0-000000@ap-south-1.amazonses.com>
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary="B_ALT_6574925423505"
+Feedback-ID: 1.ap-south-1.xot7BVmptk15rTqvOHujiljEnkooidFXCgYHpb0GqHE=:AmazonSES
+X-SES-Outgoing: 2023.12.09-76.223.181.101
+
+--B_ALT_6574925423505
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hi Yogesh,
+ Here are some of the latest opportunities matching your preferences. Apply
+now!
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Human Resources (HR)
+
+
+
+
+
+
+
+ Sportskeeda
+
+
+
+
+
+ Work From Home
+
+
+ 3 months
+
+
+ ₹6,000-8,000 /month
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Web Design (Virtual)
+
+
+
+
+
+
+
+ YTViews Digital Media Private Limited
+
+
+
+
+
+ Work From Home
+
+
+ 2 months
+
+
+ ₹5,000-12,000 /month
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Human Resource (Virtual)
+
+
+
+
+
+
+
+ YTViews Digital Media Private Limited
+
+
+
+
+
+ Work From Home
+
+
+ 3 months
+
+
+ ₹5,000-10,000 /month
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Public Relations (Virtual)
+
+
+
+
+
+
+
+ YTViews Digital Media Private Limited
+
+
+
+
+
+ Work From Home
+
+
+ 2 months
+
+
+ ₹5,000-10,000 /month
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ UX/UI Design
+
+
+
+
+
+
+
+ Tutedude
+
+
+
+
+
+ Work From Home
+
+
+ 3 months
+
+
+ ₹7,000 /month
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Human Resources (HR)
+
+
+
+
+
+
+ Allo Innoware
+
+
+
+
+
+ Work From Home
+
+
+ 2 months
+
+
+ ₹3,000-5,000 /month
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Flutter Development
+
+
+
+
+
+
+
+ Brihat Infotech Private Limited
+
+
+
+
+
+ Work From Home
+
+
+ 3 months
+
+
+ ₹4,000 /month
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Human Resources (HR)
+
+
+
+
+
+
+ Solution Graph
+
+
+
+
+
+ Work From Home
+
+
+ 4 months
+
+
+ ₹2,000 /month
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Internship
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Associate UX/UI Designer
+
+
+
+
+
+
+
+ Shubh International
+
+
+
+
+
+ Remote
+
+
+ Immediately
+
+
+ ₹6,00,000 - 8,00,000 /year
+
+
+ 0 - 1 years
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Computer Operator
+
+
+
+
+
+
+ Luminos Technology
+
+
+
+
+
+ Remote
+
+
+ Immediately
+
+
+ ₹4,00,000 - 7,00,000 /year
+
+
+ 0 - 1 years
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Computer Operator
+
+
+
+
+
+
+ Luminos Technology
+
+
+
+
+
+ Osmanabad, Satara, Ahmednagar, Solapur, Pune, Kolhapur, Jalgaon, Dhule,
+Aurangabad, Akola, Nashik, Nagpur, Jalna, Mumbai, Thane
+
+
+ Immediately
+
+
+ ₹4,00,000 - 7,00,000 /year
+
+
+ 0 - 1 years
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Android Developer
+
+
+
+
+
+
+
+ Blackcoffer
+
+
+
+
+
+ Remote
+
+
+ Immediately
+
+
+ ₹3,00,000 - 5,00,000 /year
+
+
+ 0 - 0 years
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Data Engineer
+
+
+
+
+
+
+
+ Blackcoffer
+
+
+
+
+
+ Remote
+
+
+ Immediately
+
+
+ ₹3,00,000 - 5,00,000 /year
+
+
+ 0 - 0 years
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+ Actively hiring
+
+
+
+
+
+ Human Resources (HR) Associate
+
+
+
+
+
+
+ AMAR DAS TRADING CO.
+
+
+
+
+
+ Remote
+
+
+ Immediately
+
+
+ ₹2,00,000 - 2,50,000 /year
+
+
+ 0 - 1 years
+
+
+ Part time
+
+
+
+
+
+
+
+
+
+ Just now
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+
+
+
+
+
+ Application Development Lead
+
+
+
+
+
+
+ Vayunix AI
+
+
+
+
+
+ Junagadh, Navi Mumbai, Vadodara, Udaipur, Surat, Rajkot, Pune, Indore,
+Gandhinagar, Ahmedabad
+
+
+ Immediately
+
+
+ ₹2,50,000 - 4,50,000 /year
+
+
+ 0 - 2 years
+
+
+
+
+
+
+
+
+
+ Today
+
+
+
+
+
+ Job
+ Apply now
+
+
+
+
+ These results are based on the preferences you have filled. You can change
+them here.
+
+
+ View more internships
+
+
+
+ Learn new skills to get job-ready
+ Top 3 recommended trainings for you that will help you set your resume
+apart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Human Resource Management
+
+ Master the art of managing the employee lifecycle!
+ Enroll now
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ English Speaking Course
+ Join our online English speaking course today and take your spoken English
+skills to the next level
+ Enroll now
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Digital Marketing
+ Learn SEO, Search Engine
+Marketing, Web Analytics and more
+ Enroll now
+
+
+
+
+
+
+
+
+
+
+ Explore the e-learning arm of Internshala where you can learn new-age
+skills on your schedule!
+
+ View more trainings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Internshala (Scholiverse Educare Pvt. Ltd.)901A/B, Iris Tech Park, Sector
+48, Gurugram, Haryana, India - 122018
+ Not keen on career commitments? Unsubscribe here to break up with us.
+
+
+--B_ALT_6574925423505
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div style=3D"font-family:'Arial';font-size:15px">
+    <div style=3D" max-width:640px;margin:auto">
+        <div style=3D"padding:12px 0 16px 0">
+            <img style=3D"max-height:44px;max-width:144px;display:block;mar=
+gin:0 auto" src=3D"https://cdn.internshala.com//static/images/mail/new/inte=
+rnshala_logo.png">
+        </div>
+                <div style=3D"color:#484848;max-width:640px;margin:0 auto">
+            <h5 style=3D"margin:16px 0 8px;line-height:24px;color:#333333;f=
+ont-size:18px">Hi Yogesh,</h5>
+            <p style=3D"line-height:26px;font-size:16px;margin:0 0 16px">He=
+re are some of the latest opportunities matching your preferences. Apply no=
+w!</p>
+            <div style=3D"border:1px solid #DDDDDD;box-sizing:border-box;bo=
+rder-radius:8px;padding:0 16px">
+                                                            <a style=3D"tex=
+t-decoration:none !important" href=3D"https://internshala.com/internship/de=
+tail/human-resources-hr-work-from-home-job-internship-at-sportskeeda1702023=
+639?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campaign=3D=
+2023-12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Human Resources (HR)                 =
+                   </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/5e2fde702a73f15801954=
+40.jpg" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Sportskeeda </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">3 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B96,000-8,000 /month</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/web-design-virtual-work-from-home-job-internship-at-ytviews-digita=
+l-media-private-limited1702013218?utm_source=3Dstudent_digest&utm_medium=3D=
+active_student&utm_campaign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Web Design (Virtual)                 =
+                   </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/6131b31940dab16306470=
+65.jpeg" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 1=
+6px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> YTViews Digital Media Private Limited </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">2 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B95,000-12,000 /month</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/human-resource-virtual-work-from-home-job-internship-at-ytviews-di=
+gital-media-private-limited1702018249?utm_source=3Dstudent_digest&utm_mediu=
+m=3Dactive_student&utm_campaign=3D2023-12-09&referral=3Dstudent_digest_acti=
+ve">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Human Resource (Virtual)             =
+                       </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/6131b31940dab16306470=
+65.jpeg" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 1=
+6px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> YTViews Digital Media Private Limited </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">3 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B95,000-10,000 /month</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/public-relations-virtual-work-from-home-job-internship-at-ytviews-=
+digital-media-private-limited1702017987?utm_source=3Dstudent_digest&utm_med=
+ium=3Dactive_student&utm_campaign=3D2023-12-09&referral=3Dstudent_digest_ac=
+tive">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Public Relations (Virtual)           =
+                         </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/6131b31940dab16306470=
+65.jpeg" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 1=
+6px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> YTViews Digital Media Private Limited </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">2 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B95,000-10,000 /month</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/ux-ui-design-work-from-home-job-internship-at-tutedude1702033025?u=
+tm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campaign=3D2023-=
+12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      UX/UI Design                         =
+           </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/5ec529134d4ac15899794=
+11.png" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Tutedude </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">3 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B97,000 /month</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/human-resources-hr-work-from-home-job-internship-at-allo-innoware1=
+702039015?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campa=
+ign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Human Resources (HR)                 =
+                   </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Allo Innoware </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">2 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B93,000-5,000 /month</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/flutter-development-work-from-home-job-internship-at-brihat-infote=
+ch-private-limited1702013515?utm_source=3Dstudent_digest&utm_medium=3Dactiv=
+e_student&utm_campaign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Flutter Development                  =
+                  </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/6475c4255085716854395=
+25.png" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Brihat Infotech Private Limited </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">3 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B94,000 /month</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/internshi=
+p/detail/human-resources-hr-work-from-home-job-internship-at-solution-graph=
+1702041754?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_camp=
+aign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                        <div style=3D"border-bottom:1px sol=
+id #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Human Resources (HR)                 =
+                   </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Solution Graph </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Work Fro=
+m Home</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/calendar.png" style=3D"width:16px;vertical-a=
+lign:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">4 mo=
+nths</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B92,000 /month</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Internship                            </div=
+>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/remote-associate-ux-ui-designer-fresher-jobs-at-shubh-international170201=
+6016?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campaign=
+=3D2023-12-09&referral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Associate UX/UI Designer             =
+                       </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/643e5f928013316818092=
+98.png" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Shubh International </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Remote</=
+span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B96,00,000 - 8,00,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 1 years</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/remote-computer-operator-fresher-jobs-at-luminos-technology1702032264?utm=
+_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campaign=3D2023-12=
+-09&referral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Computer Operator                    =
+                </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Luminos Technology </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Remote</=
+span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B94,00,000 - 7,00,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 1 years</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/computer-operator-fresher-jobs-in-multiple-locations-at-luminos-technolog=
+y1702032359?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_cam=
+paign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Computer Operator                    =
+                </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Luminos Technology </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Osmanaba=
+d, Satara, Ahmednagar, Solapur, Pune, Kolhapur, Jalgaon, Dhule, Aurangabad,=
+ Akola, Nashik, Nagpur, Jalna, Mumbai, Thane</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B94,00,000 - 7,00,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 1 years</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/remote-android-developer-fresher-jobs-at-blackcoffer1702017243?utm_source=
+=3Dstudent_digest&utm_medium=3Dactive_student&utm_campaign=3D2023-12-09&ref=
+erral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Android Developer                    =
+                </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/5e2fdce8a376f15801950=
+48.png" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Blackcoffer </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Remote</=
+span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B93,00,000 - 5,00,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 0 years</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/remote-data-engineer-fresher-jobs-at-blackcoffer1702017205?utm_source=3Ds=
+tudent_digest&utm_medium=3Dactive_student&utm_campaign=3D2023-12-09&referra=
+l=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Data Engineer                        =
+            </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                           =
+<img src=3D"https://cdn.internshala.com//uploads/logo/5e2fdce8a376f15801950=
+48.png" style=3D"max-width:96px;max-height:48px;float:right;margin:0 0 0 16=
+px">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Blackcoffer </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Remote</=
+span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B93,00,000 - 5,00,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 0 years</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/remote-human-resources-hr-associate-fresher-jobs-at-amar-das-trading-co17=
+02068396?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_campai=
+gn=3D2023-12-09&referral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                    <div style=3D"width: fi=
+t-content; border: 1px solid #ddd; padding: 4px 8px; display: inline-block;=
+ border-radius: 4px; margin-bottom: 8px; line-height: 0;">
+                                <img style=3D"width: 16px; vertical-align: =
+middle;" src=3D"https://internshala.com/uploads/common/image/630e523022e951=
+661882928.png" />
+                                <span style=3D"margin-left: 6px; font-weigh=
+t: 400; font-size: 12px; line-height: 16px; color: #484848;">Actively hirin=
+g</span>
+                            </div>
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Human Resources (HR) Associate       =
+                             </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> AMAR DAS TRADING CO. </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Remote</=
+span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B92,00,000 - 2,50,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 1 years</span>
+                                </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/clock.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 0 0 4px">Part time<=
+/span></span>
+                                </div>
+                                                        </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Just now                       =
+                 </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                                                <a style=3D=
+"text-decoration:none !important" href=3D"https://internshala.com/job/detai=
+l/application-development-lead-fresher-jobs-in-multiple-locations-at-vayuni=
+x-ai1701931953?utm_source=3Dstudent_digest&utm_medium=3Dactive_student&utm_=
+campaign=3D2023-12-09&referral=3Dstudent_digest_active">
+                                            <div style=3D"border-bottom:1px=
+ solid #DDDDDD;margin-top:20px">
+                                                <table style=3D"width:100%"=
+ cellspacing=3D"0" cellpadding=3D"0">
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial'">
+                                    <h5 style=3D"font-size:18px;line-height=
+:24px;color:#008BDC;margin:0 0 2px;display:inline-block">
+                                      Application Development Lead         =
+                           </h5>
+                                </td>
+                                <td rowspan=3D"2" style=3D"max-width:96px;v=
+ertical-align:top">
+                                                                    </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"vertical-align:top;font-family=
+:'Arial';">
+                                    <span style=3D";color:#666666;line-heig=
+ht:22px;font-family:'Arial'"> Vayunix AI </span>
+                                </td>
+                            </tr>
+                        </table>
+                                                <div style=3D"font-size:0;c=
+olor:#484848;line-height:22px;margin-top:12px;">
+                            <div style=3D"display:inline-block;font-size:15=
+px;margin:0 0 12px">
+                                <img src=3D"https://cdn.internshala.com//st=
+atic/images/student_digest/location.png" style=3D"width:16px;vertical-align=
+:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Junagadh=
+, Navi Mumbai, Vadodara, Udaipur, Surat, Rajkot, Pune, Indore, Gandhinagar,=
+ Ahmedabad</span>
+                            </div>
+                                                            <div style=3D"d=
+isplay:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/playcircle.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">Im=
+mediately</span>
+                                </div>
+                                                                <div style=
+=3D"display:inline-block;font-size:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/money.png" style=3D"width:16px;vertical-alig=
+n:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">=E2=82=
+=B92,50,000 - 4,50,000 /year</span>
+                                </div>
+                                <div style=3D"display:inline-block;font-siz=
+e:15px;margin:0 0 12px">
+                                    <img src=3D"https://cdn.internshala.com=
+//static/images/student_digest/experience.png" style=3D"width:16px;vertical=
+-align:middle"><span style=3D"vertical-align:middle;margin:0 40px 0 4px">0 =
+- 2 years</span>
+                                </div>
+                                                    </div>
+
+                        <div>
+                                                            <div style=3D"d=
+isplay: inline-block;margin-bottom: 12px; height: 16px; font-size: 0;paddin=
+g: 2px 6px;border-radius:4px;color: #2FB212; background-color: #F1FFE5;">
+                                        <div style=3D"display: inline-block=
+;height: 16px; vertical-align: middle">
+                                            <img src=3D"https://cdn.interns=
+hala.com//static/images/student/premium_notification/label-success.png" sty=
+le=3D"width: 16px; margin-right: 4px;">
+                                        </div>
+                                        <div style=3D"display: inline-block=
+; vertical-align: middle;font-size:12px; line-height:16px;">
+                                            Today                          =
+              </div>
+                                </div>
+                                                    </div>
+
+                        <div>
+                            <div style=3D"display:inline-block;margin:0 0 2=
+0px;background: #EEEEEE;padding:2px 6px;border-radius:4px;font-size:13px;li=
+ne-height:18px;color:#666666">
+                                Job                            </div>
+                            <div style=3D"color:#008BDC;line-height:18px;fl=
+oat:right;margin:4px 0 24px">Apply now</div>
+                        </div>
+                    </div>
+                        </a>
+                                    <p style=3D"margin:32px 0 24px;font-siz=
+e:14px;line-height:22px;text-align:center;color:#484848">
+                    These results are based on the preferences you have fil=
+led. You can change them <a href=3D"https://internshala.com//user_preferenc=
+e/preferences/66CF4CDB-DB86-1CB3-FF79-A2819B694C23/16128170?utm_source=3Dst=
+udent_digest" style=3D"color:#008BDC;text-decoration:none !important">here.=
+</a>
+                </p>
+                <div style=3D"text-align:center; margin-bottom: 24px;">
+                                            <a href=3D"https://internshala.=
+com//internships?utm_source=3Dstudent_digest" target=3D"_blank" style=3D'ba=
+ckground:#00A5EC;color:#FFFFFF;padding:12px 16px;border-radius:4px;text-ali=
+gn:center;text-decoration:none;display:inline-block;font-weight:700;font-si=
+ze:15px;line-height:18px;cursor:pointer;'>View more internships</a>
+                                        </div>
+                                                            </div>
+                            <div style=3D"margin-top:40px;">
+                    <div style=3D"font-weight: bold;font-size: 20px;line-he=
+ight: 30px;color: #333333;text-align: center;">Learn new skills to get job-=
+ready</div>
+                    <div style=3D"font-weight: normal;font-size: 16px;line-=
+height: 26px;color: #666666;margin-top: 4px;margin-bottom:24px;text-align: =
+center;">Top 3 recommended trainings for you that will help you set your re=
+sume apart</div>
+                    <div style=3D"border:1px solid #DDDDDD;border-radius:8p=
+x;">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                            <tbody>
+                                                                <tr>
+                                    <td style=3D"padding: 20px 15px; width:=
+100%;">
+                                        <a href=3D"https://trainings.intern=
+shala.com//human-resource-management?utm_source=3Dis_web_student_digest">
+
+                                            <div style=3D"float:left; width=
+:212px;">
+                                                <div style=3D"margin-bottom=
+:12px;margin-right: 12px;">
+                                                    <img src=3D"https://tra=
+inings.internshala.com/cached_uploads/home/images/human-resource-management=
+.jpg" alt=3D"" style=3D"width: 200px;border-radius:4px;">
+                                                </div>
+                                            </div>
+                                            <div style=3D"float:left; width=
+:296px;font-family:'Arial';">
+                                                <div style=3D"">
+                                                    <div style=3D"font-weig=
+ht:bold;font-size: 16px;line-height: 24px;color: #333333;">Human Resource M=
+anagement
+</div>
+                                                    <p style=3D"font-weight=
+: normal;font-size: 14px;line-height: 22px;color: #666666;margin: 6px 0 8px=
+ 0;">Master the art of managing the employee lifecycle!</p>
+                                                    <div href=3D"#" style=
+=3D"font-weight: 500;font-size: 15px;line-height: 18px;color: #008BDC;">Enr=
+oll now</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr><td style=3D"padding:0 16px 0 16px;"><h=
+r style=3D"border: 0;border-top: 1px solid #DDDDDD;margin:0;"></td></tr>
+                                                                <tr>
+                                    <td style=3D"padding: 20px 15px; width:=
+100%;">
+                                        <a href=3D"https://trainings.intern=
+shala.com//english-speaking?utm_source=3Dis_web_student_digest">
+
+                                            <div style=3D"float:left; width=
+:212px;">
+                                                <div style=3D"margin-bottom=
+:12px;margin-right: 12px;">
+                                                    <img src=3D"https://tra=
+inings.internshala.com/cached_uploads/home/images/english-speaking.jpg" alt=
+=3D"" style=3D"width: 200px;border-radius:4px;">
+                                                </div>
+                                            </div>
+                                            <div style=3D"float:left; width=
+:296px;font-family:'Arial';">
+                                                <div style=3D"">
+                                                    <div style=3D"font-weig=
+ht:bold;font-size: 16px;line-height: 24px;color: #333333;">English Speaking=
+ Course</div>
+                                                    <p style=3D"font-weight=
+: normal;font-size: 14px;line-height: 22px;color: #666666;margin: 6px 0 8px=
+ 0;">Join our online English speaking course today and take your spoken Eng=
+lish skills to the next level</p>
+                                                    <div href=3D"#" style=
+=3D"font-weight: 500;font-size: 15px;line-height: 18px;color: #008BDC;">Enr=
+oll now</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr><td style=3D"padding:0 16px 0 16px;"><h=
+r style=3D"border: 0;border-top: 1px solid #DDDDDD;margin:0;"></td></tr>
+                                                                <tr>
+                                    <td style=3D"padding: 20px 15px; width:=
+100%;">
+                                        <a href=3D"https://trainings.intern=
+shala.com//digital-marketing?utm_source=3Dis_web_student_digest">
+
+                                            <div style=3D"float:left; width=
+:212px;">
+                                                <div style=3D"margin-bottom=
+:12px;margin-right: 12px;">
+                                                    <img src=3D"https://tra=
+inings.internshala.com/cached_uploads/home/images/digital-marketing.jpg" al=
+t=3D"" style=3D"width: 200px;border-radius:4px;">
+                                                </div>
+                                            </div>
+                                            <div style=3D"float:left; width=
+:296px;font-family:'Arial';">
+                                                <div style=3D"">
+                                                    <div style=3D"font-weig=
+ht:bold;font-size: 16px;line-height: 24px;color: #333333;">Digital Marketin=
+g</div>
+                                                    <p style=3D"font-weight=
+: normal;font-size: 14px;line-height: 22px;color: #666666;margin: 6px 0 8px=
+ 0;">Learn SEO, Search Engine
+Marketing, Web Analytics and more</p>
+                                                    <div href=3D"#" style=
+=3D"font-weight: 500;font-size: 15px;line-height: 18px;color: #008BDC;">Enr=
+oll now</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr><td style=3D"padding:0 16px 0 16px;"><h=
+r style=3D"border: 0;border-top: 1px solid #DDDDDD;margin:0;"></td></tr>
+                                                            </tbody>
+                        </table>
+                        <div style=3D"text-align: center;padding: 0 15px;">
+                            <p style=3D"margin:32px 0 24px;font-size:14px;l=
+ine-height:22px;text-align:center;color:#484848">
+                                Explore the e-learning arm of Internshala w=
+here you can learn new-age skills on your schedule!
+                            </p>
+                            <a href=3D"https://trainings.internshala.com/?u=
+tm_source=3Dis_web_student_digest" target=3D"_blank" style=3D'background:#0=
+0A5EC;color:#FFFFFF;padding:12px 16px;border-radius:4px;text-align:center;t=
+ext-decoration:none;display:inline-block;font-weight:600;font-size:14px;lin=
+e-height:16px;cursor:pointer;margin-bottom: 40px;'>View more trainings</a>
+                        </div>
+                    </div>
+                </div>
+           =20
+            <div style=3D"text-align:center;color:#666666s;font-size:13px;l=
+ine-height:18px;margin: 0 0 48px">
+                <table cellspacing=3D"0" style=3D"max-width:248px;margin:24=
+px auto">
+                    <tr>
+                        <td style=3D"padding:0 16px 0 0">
+                            <a href=3D"https://play.google.com/store/apps/d=
+etails?id=3Dcom.internshala.app">
+                                <img style=3D"width:24px;display:block" src=
+=3D"https://cdn.internshala.com//static/images/mail/new/social_icons/playst=
+ore.png">
+                            </a>
+                        </td>
+                        <td style=3D"padding:0 16px">
+                            <a href=3D"https://instagram.com/internshala">
+                                <img style=3D"width:24px;display:block" src=
+=3D"https://cdn.internshala.com//static/images/mail/new/social_icons/instag=
+ram.png">
+                            </a>
+                        </td>
+                        <td style=3D"padding:0 16px">
+                            <a href=3D"https://www.facebook.com/Internshala=
+/">
+                                <img style=3D"width:24px;display:block" src=
+=3D"https://cdn.internshala.com//static/images/mail/new/social_icons/facebo=
+ok.png">
+                            </a>
+                        </td>
+                        <td style=3D"padding:0 16px">
+                            <a href=3D"https://twitter.com/Internshala">
+                                <img style=3D"width:24px;display:block" src=
+=3D"https://cdn.internshala.com//static/images/mail/new/social_icons/twitte=
+r.png">
+                            </a>
+                        </td>
+                        <td style=3D"padding:0 0 0 16px">
+                            <a href=3D"https://www.linkedin.com/company/int=
+ernshala/">
+                                <img style=3D"width:24px;display:block" src=
+=3D"https://cdn.internshala.com//static/images/mail/new/social_icons/linked=
+in.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <div style=3D"margin:0 0 16px 0">Internshala (Scholiverse E=
+ducare Pvt. Ltd.)<br>901A/B, Iris Tech Park, Sector 48, Gurugram, Haryana, =
+India - 122018</div>
+                <div>Not keen on career commitments? Unsubscribe <a href=3D=
+"https://internshala.com//subscribe/unsubscribe_link/15749054/D8A3AFAB-9A01=
+-026A-51CA-80E6B9711B7C/digest/?utm_source=3Dstudent_digest&utm_medium=3Dac=
+tive_student&utm_campaign=3D2023-12-09" style=3D"color:#008BDC;text-decorat=
+ion:none !important">here</a> to break up with us.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<img border=3D'0' src=3D"https://track.internshala.com/em/i/o/31ehkczrf50" =
+width=3D"1" height=3D"1" alt=3D"" >
+
+--B_ALT_6574925423505--
